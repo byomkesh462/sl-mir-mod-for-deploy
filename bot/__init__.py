@@ -38,13 +38,13 @@ CONFIG_FILE_URL = os.environ.get('CONFIG_FILE_URL', None)
 if CONFIG_FILE_URL is not None:
     res = requests.get(CONFIG_FILE_URL)
     if res.status_code == 200:
-        with open('config2.env', 'wb+') as f:
+        with open('config3.env', 'wb+') as f:
             f.write(res.content)
             f.close()
     else:
         logging.error(res.status_code)
 
-load_dotenv('config2.env') #--Change this config.env file name for each new deply---#
+load_dotenv('config3.env') #--Change this config.env file name for each new deply---#
 
 SERVER_PORT = os.environ.get('SERVER_PORT', None)
 PORT = os.environ.get('PORT', SERVER_PORT)
