@@ -171,7 +171,11 @@ class MirrorListener(listeners.MirrorListeners):
     def onUploadProgress(self):
         pass
 
-    def onUploadComplete(self, link: str, size, files, folders, typ):
+    def onUploadComplete(bot, self, link: str, size, files, folders, typ):
+        bot_d = bot.get_me()
+        b_uname = bot_d.username
+        b_fname = bot_d.first_name
+        b_lname = bot_d.last_name
         with download_dict_lock:
             msg = f'<b>Filename: </b><code>{download_dict[self.uid].name()}</code>\n<b>Size: </b><code>{size}</code>'
             if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
@@ -221,6 +225,7 @@ class MirrorListener(listeners.MirrorListeners):
                 uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
             if uname is not None:
                 msg += f'\n\nRequest by: {uname}'
+                msg += f'\n\nUploaded by: <a href="t.me/{b_uname}">{b_fname} {b_lname}</a>' # Added bot info
                 msg_g = f'\n\n - 𝙽𝚎𝚟𝚎𝚛 𝚂𝚑𝚊𝚛𝚎 𝙶-𝙳𝚛𝚒𝚟𝚎\n - 𝙽𝚎𝚟𝚎𝚛 𝚂𝚑𝚊𝚛𝚎 𝙸𝚗𝚍𝚎𝚡 𝙻𝚒𝚗𝚔\n - 𝙹𝚘𝚒𝚗 𝚃𝙳 𝚃𝚘 𝙰𝚌𝚌𝚎𝚜𝚜 𝙶-𝙳𝚛𝚒𝚟𝚎 𝙻𝚒𝚗𝚔'
             try:
                 fs_utils.clean_download(download_dict[self.uid].path())
@@ -234,7 +239,7 @@ class MirrorListener(listeners.MirrorListeners):
             log_m = f"\n\n<b>Link Uploaded, Click Below Button👇</b>"
         else:
             pass
-        sendMarkup(msg + fwdpm, self.bot, self.update, InlineKeyboardMarkup([[InlineKeyboardButton(text="𝐂𝐋𝐈𝐂𝐊 𝐇𝐄𝐑𝐄", url=logmsg.link)]]))
+        sendMarkup(msg + fwdpm, self.bot, self.update, InlineKeyboardMarkup([[InlineKeyboardButton(text="⭑⭑✪ CLICK HERE ✪⭑⭑", url=logmsg.link)]]))
         sendPrivate(msg + msg_g, self.bot, self.update, InlineKeyboardMarkup(buttons.build_menu(2)))
         if count == 0:
             self.clean()
