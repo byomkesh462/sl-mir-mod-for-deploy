@@ -22,6 +22,7 @@ from tenacity import *
 from telegram import InlineKeyboardMarkup
 from telegram.ext import CommandHandler
 from bot import bot
+from telegram import Bot
 from telegram.message import Message
 from bot.helper.telegram_helper import button_build
 from telegraph import Telegraph
@@ -319,7 +320,7 @@ class GoogleDriveHelper:
         files = self.total_files
         folders = self.total_folders
         typ = self.typee
-        self.__listener.onUploadComplete(bot, link, size, files, folders, typ)
+        self.__listener.onUploadComplete(bot: Bot, link, size, files, folders, typ)
         return link
 
 
