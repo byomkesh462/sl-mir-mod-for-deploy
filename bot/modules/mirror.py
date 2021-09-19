@@ -41,6 +41,12 @@ import shutil
 ariaDlManager = AriaDownloadHelper()
 ariaDlManager.start_listener()
 
+async def storefile(c, m):
+    bot = await c.get_me()
+    b_uname = bot.username
+    b_fname = bot.first_name
+    b_lname = bot.last_name
+
 class MirrorListener(listeners.MirrorListeners):
     def __init__(self, bot, update, pswd, isTar=False, extract=False, isZip=False, isQbit=False, tag=None):
         super().__init__(bot, update)
