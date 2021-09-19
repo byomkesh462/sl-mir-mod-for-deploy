@@ -21,6 +21,7 @@ from tenacity import *
 
 from telegram import InlineKeyboardMarkup
 from telegram.ext import CommandHandler
+from telegram.message import Message
 from bot.helper.telegram_helper import button_build
 from telegraph import Telegraph
 from bot import parent_id, DOWNLOAD_DIR, IS_TEAM_DRIVE, INDEX_URL, \
