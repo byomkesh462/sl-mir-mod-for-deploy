@@ -23,6 +23,7 @@ from telegram import InlineKeyboardMarkup
 from telegram.ext import CommandHandler
 from bot import bot
 from telegram import Bot
+from pyrogram import Client
 from telegram.message import Message
 from bot.helper.telegram_helper import button_build
 from telegraph import Telegraph
