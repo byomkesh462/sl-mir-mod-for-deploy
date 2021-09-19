@@ -165,12 +165,6 @@ class MirrorListener(listeners.MirrorListeners):
             self.clean()
         else:
             update_all_messages()
-'''
-    async def storefile(c, m):
-        bot = await c.get_me()
-        b_uname = bot.username
-        b_fname = bot.first_name
-        b_lname = bot.last_name'''
     
     def onUploadStarted(self):
         pass
