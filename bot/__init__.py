@@ -156,6 +156,8 @@ try:
     RESTARTED_GROUP_ID = getConfig('LOG_SEND_TEXT')
     RESTARTED_GROUP_ID2 = getConfig('LOG_SEND_TEXT')
     CHANNEL_LINK = getConfig('CHANNEL_LINK')
+    BOT_USERNAME = getConfig('BOT_USERNAME')
+    BOT_NAME = getConfig('BOT_NAME')
 except KeyError as e:
     LOGGER.error("One or more env variables missing! Exiting now")
     exit(1)
