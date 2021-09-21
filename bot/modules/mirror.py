@@ -173,13 +173,13 @@ class MirrorListener(listeners.MirrorListeners):
 
     def onUploadComplete(self, link: str, size, files, folders, typ):
         with download_dict_lock:
-            msg = f'<b>Filename: </b><code>{download_dict[self.uid].name()}</code>\n\n╭<b>Size: </b><code>{size}</code>'
+            msg = f'📛 𝗙𝗶𝗹𝗲 𝗡𝗮𝗺𝗲: <code>{download_dict[self.uid].name()}</code>\n\n╭💾 𝗦𝗶𝘇𝗲: <code>{size}</code>'
             if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
-                msg += '\n├<b>Type: </b><code>Folder</code>'
-                msg += f'\n├<b>SubFolders: </b><code>{folders}</code>'
-                msg += f'\n├<b>Files: </b><code>{files}</code>'
+                msg += '\n├🔍 𝗧𝘆𝗽𝗲: <code>Folder</code>'
+                msg += f'\n├📁 𝗦𝘂𝗯𝗙𝗼𝗹𝗱𝗲𝗿𝘀: <code>{folders}</code>'
+                msg += f'\n├📃 𝗙𝗶𝗹𝗲𝘀: <code>{files}</code>'
             else:
-                msg += f'\n├<b>Type: </b><code>{typ}</code>'
+                msg += f'\n├🔍 𝗧𝘆𝗽𝗲: <code>{typ}</code>'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
                 surl = short_url(link)
@@ -220,9 +220,9 @@ class MirrorListener(listeners.MirrorListeners):
             else:
                 uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
             if uname is not None:
-                msg += f'\n│\n├Requested by: {uname}'
-                msg += f'\n├Uploaded by: <a href="t.me/{BOT_USERNAME}">{BOT_NAME}</a>' # Added bot info
-                msg_g = f'\n│\n├𝙽𝚎𝚟𝚎𝚛 𝚂𝚑𝚊𝚛𝚎 𝙶-𝙳𝚛𝚒𝚟𝚎\n├𝙽𝚎𝚟𝚎𝚛 𝚂𝚑𝚊𝚛𝚎 𝙸𝚗𝚍𝚎𝚡 𝙻𝚒𝚗𝚔\n╰𝙹𝚘𝚒𝚗 𝚃𝙳 𝚃𝚘 𝙰𝚌𝚌𝚎𝚜𝚜 𝙶-𝙳𝚛𝚒𝚟𝚎 𝙻𝚒𝚗𝚔'
+                msg += f'\n│\n├<b>Requested by: </b>{uname}'
+                msg += f'\n╰<b>Uploaded by: </b><a href="t.me/{BOT_USERNAME}">{BOT_NAME}</a>' # Added bot info
+                msg_g = f'\n│\n╭𝙽𝚎𝚟𝚎𝚛 𝚂𝚑𝚊𝚛𝚎 𝙶-𝙳𝚛𝚒𝚟𝚎\n├𝙽𝚎𝚟𝚎𝚛 𝚂𝚑𝚊𝚛𝚎 𝙸𝚗𝚍𝚎𝚡 𝙻𝚒𝚗𝚔\n╰𝙹𝚘𝚒𝚗 𝚃𝙳 𝚃𝚘 𝙰𝚌𝚌𝚎𝚜𝚜 𝙶-𝙳𝚛𝚒𝚟𝚎 𝙻𝚒𝚗𝚔'
             try:
                 fs_utils.clean_download(download_dict[self.uid].path())
             except FileNotFoundError:
