@@ -20,7 +20,6 @@ from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 from tenacity import *
 
 from telegram import InlineKeyboardMarkup
-from pyrogram import Client
 from bot.helper.telegram_helper import button_build
 from telegraph import Telegraph
 from bot import parent_id, DOWNLOAD_DIR, IS_TEAM_DRIVE, INDEX_URL, \
