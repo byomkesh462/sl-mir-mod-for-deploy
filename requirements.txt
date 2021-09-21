@@ -25,6 +25,7 @@ qbittorrent-api
 requests
 speedtest-cli
 telegraph
+quoters
 tenacity
 TgCrypto
 torrentool==1.1.0
