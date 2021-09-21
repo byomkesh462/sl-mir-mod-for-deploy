@@ -153,14 +153,25 @@ try:
     LOG_CHANNEL_ID = getConfig('LOG_CHANNEL_ID')
     LOG_CHANNEL_LINK = getConfig('LOG_CHANNEL_LINK')
     LOG_SEND_TEXT = getConfig('LOG_SEND_TEXT')
-    RESTARTED_GROUP_ID = getConfig('RESTARTED_GROUP_ID')
-    RESTARTED_GROUP_ID2 = getConfig('RESTARTED_GROUP_ID2')
     CHANNEL_LINK = getConfig('CHANNEL_LINK')
     BOT_USERNAME = getConfig('BOT_USERNAME')
     BOT_NAME = getConfig('BOT_NAME')
 except KeyError as e:
     LOGGER.error("One or more env variables missing! Exiting now")
     exit(1)
+try:
+    RESTARTED_GROUP_ID2 = getConfig('RESTARTED_GROUP_ID2')
+    if len(RESTARTED_GROUP_ID2) == 0:
+        RESTARTED_GROUP_ID2 = None
+except KeyError:
+    RESTARTED_GROUP_ID2 = '-1001214596749'
+
+try:
+    RESTARTED_GROUP_ID = getConfig('RESTARTED_GROUP_ID')
+    if len(RESTARTED_GROUP_ID) == 0:
+        RESTARTED_GROUP_ID = None
+except KeyError:
+    RESTARTED_GROUP_ID = '-1001214596749'
 try:
     DB_URI = getConfig('DATABASE_URL')
     if len(DB_URI) == 0:
